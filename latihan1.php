@@ -6,6 +6,12 @@
     $color_message = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        echo '<pre>';
+        var_dump($_POST);
+        echo '</pre>';
+
+        echo infoPost($_POST);
+
         if ($_POST["username"] == $username  AND $_POST["password"] == $password) {
             $login_message = "Login Berhasil";
             $color_message = "green";
@@ -14,6 +20,16 @@
             $color_message = "red";
         }
     }
+
+    function infoPost($arrayData) {
+        $info = "<strong>Data</strong><br>";
+
+        foreach($arrayData as $key => $value){
+            $info .=  $key . " : " . $value . "<br>";
+        }
+        
+        return $info;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -21,12 +37,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Latihan 1</title>
 </head>
 <body>
     <h1>Form Login</h1>
 
-    <form action="login.php" method="POST">
+    <form action="latihan1.php" method="POST">
         <label for="username">Username</label>
         <input type="text" name="username">
         <br>
